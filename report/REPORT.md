@@ -17,9 +17,9 @@
 
 > Dự đoán điều kiện nào đạt điểm cao nhất trên **tác vụ đánh giá** và vì sao. Nêu căn cứ từ phân loại lỗi (mục 4) và từ tài liệu tham khảo. Điền cả ba dòng; `verify_freeze.py` kiểm tra điều này.
 
-- H1 (subagents so với baseline):
-- H2 (skills-auto so với baseline):
-- H3 (tác vụ học so với tác vụ đánh giá):
+- H1 (subagents so với baseline): Dự đoán `subagents` đạt số check đánh giá bằng hoặc thấp hơn `baseline`, nhưng dùng nhiều token hơn. Trên tác vụ học, hai điều kiện cùng đạt 17/27 check trong khi `subagents` dùng 397316 so với 218064 token (+82,2%); các lỗi chủ yếu là 9 check quy ước (nhóm E) mà việc chia việc không tự bổ sung được. [Anthropic](https://www.anthropic.com/engineering/multi-agent-research-system) cũng ghi nhận đa tác tử tốn token và thường kém phù hợp khi tác vụ lập trình có ít nhánh độc lập.
+- H2 (skills-auto so với baseline): Dự đoán `skills-auto` đạt điểm **cao nhất trên tác vụ đánh giá**, hơn `baseline` khoảng 1–2 check, vì 9/10 lỗi baseline là quy ước và ba skill đã được đọc, giúp tăng điểm tác vụ học từ 17/27 lên 23/27. Đây là dự đoán thận trọng: [SkillsBench](https://arxiv.org/html/2602.12670v4) thấy skill tự sinh có thể kém hơn không dùng skill trong các cấu hình họ thử, nên mức tăng ở đây chưa chứng minh khả năng chuyển giao.
+- H3 (tác vụ học so với tác vụ đánh giá): Dự đoán tỉ lệ check đạt của `skills-auto` trên tác vụ đánh giá thấp hơn 23/27 (85,2%) ở tác vụ học và mức cải thiện so với `baseline` nhỏ hơn 6/27 (22,2 điểm phần trăm). Skill được curator rút từ phản hồi của đúng ba tác vụ học; quy ước mới có thể chưa được mô tả đủ, như `meta` và schema log còn bị bỏ sót. [SkillEvolBench](https://arxiv.org/abs/2605.24117) cũng ghi nhận lợi ích từ skill tự sinh ở giai đoạn học thường không ổn định khi triển khai trên tác vụ đã đóng băng.
 
 ## 3. Làm quen Deep Agents (Phần 0.3)
 
